@@ -5,7 +5,7 @@ from minutemail import Mail
 from bs4 import BeautifulSoup
 import random
 import string
-
+import os
 
 options = webdriver.ChromeOptions()
 
@@ -82,7 +82,8 @@ def main():
     # find the file upload button
     driver.find_element_by_xpath(
         "//input[@id='_user_profile_image']").send_keys(
-        "C:/Users/MR/Pictures/elon.png")
+        os.path.join(os.getcwd(), 'elon.png'))
+
     time.sleep(3)
 
     # find the Next button
