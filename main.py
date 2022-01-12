@@ -181,7 +181,7 @@ def main():
 # main()
 
 
-while True:
+for i in range(1):
     try:
         main()
     except Exception:
