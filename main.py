@@ -11,7 +11,8 @@ options = webdriver.ChromeOptions()
 
 # add headless option
 options.add_argument('--headless')
-options.add_argument('window-size=1920x1080')
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
 
 
 def random_string_generator(str_size, allowed_chars):
@@ -22,6 +23,7 @@ def main():
     mail = Mail()
     # initialize the webdriver
     driver = webdriver.Chrome(chrome_options=options)
+    driver.maximize_window()
     driver.get("https://passport.forem.com/users/sign_up")
     # find email input
     driver.find_element_by_id("user_email").send_keys(str(mail))
@@ -184,6 +186,7 @@ def main():
 for i in range(1):
     try:
         main()
-    except Exception:
+    except Exception as e:
+        print(e)
         print("Error")
         continue
